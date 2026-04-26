@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import './App.css'
+import CeoPanel from './CeoPanel'
 
 const API = import.meta.env.VITE_API_URL
 
@@ -123,31 +124,8 @@ export default function App() {
   }
 
   if (screen === 'dashboard') return (
-    <div className="dashboard">
-      <div className="dash-header">
-        <div className="dash-title">👑 ROYAL STAKING</div>
-        <button className="logout-btn" onClick={handleLogout}>Sign out</button>
-      </div>
-      <div className="stats-grid">
-        <div className="stat-card">
-          <div className="stat-label">Total Staked</div>
-          <div className="stat-value">2,450 USDT</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-label">Earnings Today</div>
-          <div className="stat-value">4.73 USDT</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-label">Total Earned</div>
-          <div className="stat-value">312.5 USDT</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-label">Referral Bonus</div>
-          <div className="stat-value">87.0 USDT</div>
-        </div>
-      </div>
-      <p style={{color:'rgba(240,234,214,0.5)',fontSize:'13px'}}>Welcome back! More features coming soon.</p>
-    </div>
+    <CeoPanel token={localStorage.getItem('token')} onLogout={handleLogout} />
+  
   )
 
   if (screen === 'ceo-otp') return (
